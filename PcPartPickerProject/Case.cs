@@ -23,15 +23,21 @@ public class Case
         Rackmount_4U,
         Rackmount_5U
     }
-    private int powerSupply; //in W
-    public enum UsbPortType
+
+    public CaseFormFactor caseFormFactor { get; private set; }
+
+    //private int powerSupply; //in W
+    /*public enum UsbPortType
     {
         USB_3_2_Gen2x2_TypeC,
         USB_3_2_Gen2_TypeC,
         USB_3_2_Gen1_TypeC,
         USB_3_2_Gen1_TypeA,
         USB_2_0_TypeA
-    }
+    }*/
+    
+    
+
     public enum MotherboardFormFactor
     {
         ATX,
@@ -48,11 +54,16 @@ public class Case
         Thin_MiniITX,
         XL_ATX
     }
+
+    public List<MotherboardFormFactor> MotherboardFormFactors;
+
     private int maximumVideoCardLength;
-    public Case(string manufacturer, int powerSupply, int maximumVideoCardLength)
+    public Case(string manufacturer, int maximumVideoCardLength, List<MotherboardFormFactor> listMotherboardFormFactors, CaseFormFactor formFactorCase)
     {
         this.manufacturer = manufacturer;
-        this.powerSupply = powerSupply;
+        //this.powerSupply = powerSupply;
         this.maximumVideoCardLength = maximumVideoCardLength;
+        MotherboardFormFactors = listMotherboardFormFactors;
+        caseFormFactor = formFactorCase;
     }
 }

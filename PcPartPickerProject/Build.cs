@@ -2,8 +2,20 @@ namespace PcPartPickerProject;
 
 public class Build
 {
-    public Motherboard motherboard { get; private set; }
-    public Cpu processor { get; private set; }
+    public Motherboard? motherboard { get; set
+        {
+            if (IsCompatible(value))
+                field = value;
+        } 
+    }
+
+    public Cpu? processor { get; set
+        {
+            if (IsCompatible(value))
+                field = value;
+        } 
+    }
+
     public CpuCooler cpuCooler { get; private set; }
     public List<Ram> memory { get; private set; }
     public Gpu gpu { get; private set; }
@@ -11,20 +23,38 @@ public class Build
     public Case pcCase { get; private set; }
     public PowerSupplyUnit psuUnit { get; private set; } 
     public bool IsComplete { get; private set; }
+    
+
     public Build()
     {
         IsComplete = false;
     }
-    public Cpu? Cpu { get; set
-        {
-            if (IsCompatible(value))
-                field = value;
-        } 
-    }
+    
     public bool IsCompatible(Cpu? cpu)
     {
-        /*return cpu == null || (CpuCooler == null || cpu?.Chipset == CpuCooler?.ChipsetCompatibility)
-            && (Motherboard == null || cpu?.Chipset == Motherboard?.ChipsetCompatibility);*/
-        return cpu=null;
+        return cpu == null || (cpuCooler == null || cpuCooler.chipsetType.Contains(cpu.chipsetType))
+            && (motherboard == null || cpu?.chipsetType.ToString() == motherboard?.chipsetType.ToString());
     }
+
+    public bool IsCompatible(Motherboard? mobo)
+    {
+        return mobo == null || (cpuCooler == null || cpuCooler.chipsetType.Contains(mobo.chipsetType))
+            && (processor == null || processor?.chipsetType == mobo?.chipsetType);
+    }
+    
+    /*
+    public bool IsCompatible(CpuCooler? cpuCoolerObject)
+    {
+        return cpuCoolerObject == null || (motherboard == null || cpuCoolerObject.chipsetType.Contains(motherboard.chipsetType))
+            && (processor == null || cpuCoolerObject?.chipsetType.Contains(processor.chipsetType));
+    }
+*/
+    /*
+    public bool IsCompatibleCase(Case? caseObject)
+    {
+        return caseObject == null || (motherboard == null || caseObject.MotherboardFormFactors.ToString().Contains(motherboard.formFactor.ToString()))
+    }
+    */
+    
+    
 }
