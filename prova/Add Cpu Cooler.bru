@@ -1,0 +1,20 @@
+meta {
+  name: Add Cpu Cooler
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:5205/addCpuCooler
+  body: json
+  auth: inherit
+}
+
+body:json {
+  "Hyper 212 Black Edition"
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

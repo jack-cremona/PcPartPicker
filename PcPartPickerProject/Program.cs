@@ -19,13 +19,13 @@ app.UseHttpsRedirection();
 
 Build build = new Build();
 
-app.MapPost("/AddMotherboard", ([FromBody]  string name) =>
+app.MapPost("/addMobo", ([FromBody]  string name) =>
 {
     Motherboard m = DB.motherboards.SingleOrDefault(m => m.model == name);
     if (build.IsCompatible(m))
     {
         build.motherboard = m;
-        Console.WriteLine("motherboard added because in compatible");
+        Console.WriteLine("motherboard added because is compatible");
         return Results.Ok();
     }
     else
@@ -35,7 +35,7 @@ app.MapPost("/AddMotherboard", ([FromBody]  string name) =>
     }
 });
 
-app.MapPost("/AddCpu", ([FromBody] string name) =>
+app.MapPost("/addCpu", ([FromBody] string name) =>
 {
     Cpu c = DB.cpus.SingleOrDefault(c => c.model == name);
     if (build.IsCompatible(c))
@@ -51,6 +51,23 @@ app.MapPost("/AddCpu", ([FromBody] string name) =>
     }
 });
 
+app.MapPost("/addCpuCooler", ([FromBody] string name) =>
+{
+    CpuCooler c = DB.cpuCoolers.SingleOrDefault(c => c.model == name);
+    if (build.IsCompatible(c))
+    {
+        build.cpuCooler = c;
+        Console.WriteLine("cpu cooler added because in compatible");
+        return Results.Ok();
+        
+    }
+    else
+    {
+        Console.WriteLine("errore Cpu cooler non compatibile");
+        return Results.BadRequest("cpu cooler non compatibile");
+    }
+});
+
 app.MapGet("/getMobo", () =>
 {
     return DB.motherboards;
@@ -59,6 +76,11 @@ app.MapGet("/getMobo", () =>
 app.MapGet("/getCpu", () =>
 {
     return DB.cpus;
+});
+
+app.MapGet("/getCpuCooler", () =>
+{
+    return DB.cpuCoolers;
 });
 
 app.Run();

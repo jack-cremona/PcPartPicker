@@ -1,0 +1,20 @@
+meta {
+  name: Add Mobo
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:5205/addMobo
+  body: json
+  auth: inherit
+}
+
+body:json {
+  "B650 GAMING PLUS WIFI"
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
