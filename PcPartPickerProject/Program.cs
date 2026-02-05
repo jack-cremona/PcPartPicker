@@ -25,22 +25,6 @@ app.MapControllers();
 
 Build build = new Build();
 
-app.MapPost("/addMobo", ([FromBody]  string name) =>
-{
-    Motherboard m = DB.motherboards.SingleOrDefault(m => m.model == name);
-    if (build.IsCompatible(m))
-    {
-        build.motherboard = m;
-        Console.WriteLine("motherboard added because is compatible");
-        return Results.Ok();
-    }
-    else
-    {
-        Console.WriteLine("errore Motherboard non compatibile");
-        return Results.BadRequest("motherboard non compatibile");
-    }
-});
-
 app.MapPost("/addCpu", ([FromBody] string name) =>
 {
     Cpu c = DB.cpus.SingleOrDefault(c => c.model == name);
