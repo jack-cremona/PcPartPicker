@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
 namespace PcPartPickerProject;
@@ -44,8 +45,12 @@ public class Motherboard
         ThinMiniITX,
         XLATX
     }
-    public FormFactor formFactor { get; set; }    
-    public int memoryMax { get; set; }
+    public FormFactor formFactor { get; set; }
+
+    [Range(1, 1024)]
+    public int memoryMax { get; set; } //gb
+    
+    [Range(1, 1024)]
     public int memorySlots { get; set; }
 
     //costruttore
