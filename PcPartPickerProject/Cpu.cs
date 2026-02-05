@@ -6,21 +6,22 @@ public class Cpu
 {
     public required Guid Id { get; set; }
     public string chipsetType { get; private set; }
-
-    public enum Manufacturer
-    {
-        Intel,
-        AMD
-    }
-    
     public Manufacturer producer { get; set; }
     public string model { get; set; }
     public int coreCount { get; set; }
     public double performanceCoreBoostClock { get; set; }
     public string microarchitecture { get; set; }
     public int tdp { get; set; }
+
+    #region Enum
+
     enum IntegratedGpu{ Intel,AMD,None }
-    
+    public enum Manufacturer
+    {
+        Intel,
+        AMD
+    }
+    #endregion
     [SetsRequiredMembers]
     public Cpu(Manufacturer prod, string model, int coreCount, double performanceCoreBoostClock, string microarchitecture, string chipsetType, int tdp)
     {

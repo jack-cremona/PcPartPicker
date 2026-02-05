@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using PcPartPickerProject;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -73,4 +74,5 @@ app.MapGet("/getCpuCooler", () =>
     return DB.cpuCoolers;
 });
 
+app.MapScalarApiReference();
 app.Run();

@@ -6,13 +6,13 @@ public class Storage
     string model { get; set; }
     int cache { get; set; }
     int capacity { get; set; }
+    public Type type { get; private set; }
+    string formFactor { get; set; }
     public enum Type 
     {
         SATA,
         M2
     }
-    public Type type { get; private set; }
-    string formFactor { get; set; }
     public Storage(string manufacturer, string model, int cache, int capacity, Type type)
     {
         this.manufacturer = manufacturer;

@@ -3,6 +3,17 @@ namespace PcPartPickerProject;
 public class Gpu
 {
     string model { get; set; }
+    public Manufacturer manufacturer { get; private set; }
+    public GpuChipsetType chipsetType { get; private set; }
+    int memory { get; set; } // in GB
+    float coreClock { get; set; } // in MHz
+    float boostClock { get; set; } // in MHz
+    int length { get; set; } //in mm
+
+    #region Enum
+
+    
+
     public enum Manufacturer
     {
         Acer,
@@ -49,9 +60,6 @@ public class Gpu
         Zogis,
         Zotac
     }
-    
-    public Manufacturer manufacturer { get; private set; }
-   
     public enum GpuChipsetType
     {
         // Intel
@@ -72,15 +80,9 @@ public class Gpu
         NvidiaRTXProfessional,   // es: RTX A400/A2000/A5000/A6000, RTX 2000/4000/5000/6000 Ada Gen
         NvidiaTSeries            // es: T400, T600, T1000 (workstation entry)
     }
-    
-    public GpuChipsetType chipsetType { get; private set; }
-    
-    int memory { get; set; } // in GB
-    float coreClock { get; set; } // in MHz
-    float boostClock { get; set; } // in MHz
-    int length { get; set; } //in mm
 
 
+    #endregion
     public Gpu(string model, Manufacturer manufacturer, GpuChipsetType chipsetType, int memory, float coreClock, float boostClock, int length)
     {
         if(model == null)
