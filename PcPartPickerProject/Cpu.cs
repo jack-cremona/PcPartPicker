@@ -1,7 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace PcPartPickerProject;
 
 public class Cpu
 {
+    public required Guid Id { get; set; }
     public string chipsetType { get; private set; }
 
     public enum Manufacturer
@@ -18,8 +21,10 @@ public class Cpu
     public int tdp { get; set; }
     enum IntegratedGpu{ Intel,AMD,None }
     
+    [SetsRequiredMembers]
     public Cpu(Manufacturer prod, string model, int coreCount, double performanceCoreBoostClock, string microarchitecture, string chipsetType, int tdp)
     {
+        Id = Guid.NewGuid();
         producer = prod;
         this.model = model;
         this.chipsetType = chipsetType;

@@ -51,7 +51,7 @@ public class Gpu
     }
     
     public Manufacturer manufacturer { get; private set; }
-    
+   
     public enum GpuChipsetType
     {
         // Intel
