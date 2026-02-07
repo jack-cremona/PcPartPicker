@@ -24,6 +24,7 @@ app.UseAuthorization(); //esistono delle classi controller che dovrai mappare pe
 
 app.MapControllers();
 
+/*
 Build build = new Build();
 
 app.MapPost("/addCpu", ([FromBody] string name) =>
@@ -73,6 +74,7 @@ app.MapGet("/getCpuCooler", () =>
 {
     return DB.cpuCoolers;
 });
+*/
 
 app.MapScalarApiReference();
 app.Run();

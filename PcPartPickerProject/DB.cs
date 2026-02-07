@@ -15,7 +15,7 @@ public static class DB
         new Cpu(Cpu.Manufacturer.Intel,"i7-14700K",20,5.6,"Raptor Lake Refresh","LGA1700",125),
         new Cpu(Cpu.Manufacturer.AMD, "Ryzen 9 9950X", 16, 5.7, "Zen5", "AM5", 170),
         new Cpu(Cpu.Manufacturer.Intel, "Core i9-14900K", 24, 6.0, "Raptor Lake Refresh", "LGA1700", 125)
-
+            
     };
     
     public static List<CpuCooler> cpuCoolers = new List<CpuCooler>()
