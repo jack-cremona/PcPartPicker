@@ -22,6 +22,7 @@ public class Cpu
         AMD
     }
     #endregion
+
     [SetsRequiredMembers]
     public Cpu(Manufacturer prod, string model, int coreCount, double performanceCoreBoostClock, string microarchitecture, string chipsetType, int tdp)
     {

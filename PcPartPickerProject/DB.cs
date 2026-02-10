@@ -1,5 +1,7 @@
 namespace PcPartPickerProject;
 
+using enumMobo = Case.MotherboardFormFactor;
+
 public static class DB
 {
     public static List<Build> builds = [];
@@ -17,7 +19,37 @@ public static class DB
         new Cpu(Cpu.Manufacturer.Intel, "Core i9-14900K", 24, 6.0, "Raptor Lake Refresh", "LGA1700", 125)
             
     };
-    
+
+
+    public static List<Case> cases = new List<Case>()
+    {
+        new Case(
+            "Corsair",
+            "3500X ARGB",
+            410,
+            new List<Case.MotherboardFormFactor>{enumMobo.ATX, enumMobo.EATX, enumMobo.MicroATX, enumMobo.MiniITX},
+            Case.CaseFormFactor.ATX_MidTower
+        ),
+
+        new Case(
+            "Jonsbo",
+            "D32 PRO",
+            365,
+            new List<Case.MotherboardFormFactor>{enumMobo.MicroATX, enumMobo.MiniITX},
+            Case.CaseFormFactor.MicroATX_Desktop
+        ),
+
+        new Case(
+            "Corsair",
+            "9000D RGB AIRFLOW",
+            400,
+            new List<Case.MotherboardFormFactor>{enumMobo.ATX, enumMobo.EATX, enumMobo.MicroATX, enumMobo.MiniITX},
+            Case.CaseFormFactor.ATX_FullTower
+        ),
+
+
+    };
+
     public static List<CpuCooler> cpuCoolers = new List<CpuCooler>()
     {
         new CpuCooler(
@@ -68,6 +100,16 @@ public static class DB
             2100f,       // Core Clock MHz (base)
             2400f,       // Boost Clock MHz
             280          // Lunghezza mm
+        ),
+
+        new Gpu(
+            "GeForce RTX 5090",
+            Gpu.Manufacturer.Asus,
+            Gpu.GpuChipsetType.NvidiaGeForce,
+            32,          // GB
+            2010f,       // Core Clock MHz (base)
+            2610f,       // Boost Clock MHz
+            358          // Lunghezza mm
         )
     };
     

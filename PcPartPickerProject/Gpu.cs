@@ -2,13 +2,13 @@ namespace PcPartPickerProject;
 
 public class Gpu
 {
-    string model { get; set; }
+    public string model { get; set; }
     public Manufacturer manufacturer { get; private set; }
     public GpuChipsetType chipsetType { get; private set; }
-    int memory { get; set; } // in GB
-    float coreClock { get; set; } // in MHz
-    float boostClock { get; set; } // in MHz
-    int length { get; set; } //in mm
+    public int memory { get; set; } // in GB
+    public float coreClock { get; set; } // in MHz
+    public float boostClock { get; set; } // in MHz
+    public int length { get; set; } //in mm
 
     #region Enum
 

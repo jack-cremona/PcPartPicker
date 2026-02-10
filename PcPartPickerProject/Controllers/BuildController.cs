@@ -3,6 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
 
+//TO DO
+//get compatible case
+//post Add Case
+//get all gpu
+//get compatible gpu
+
+
 namespace PcPartPickerProject.Controllers
 {
     [Route("api/[controller]")]
@@ -46,6 +53,13 @@ namespace PcPartPickerProject.Controllers
         public IActionResult GetAllCpuCooler()
         {
             return Ok(DB.cpuCoolers);
+        }
+
+        [HttpGet]
+        [Route("GetAllCase")]
+        public IActionResult GetAllCase()
+        {
+            return Ok(DB.cases);
         }
 
         [HttpGet]
@@ -158,6 +172,8 @@ namespace PcPartPickerProject.Controllers
         }
 
         #endregion
+        
+        
 
     }
 }

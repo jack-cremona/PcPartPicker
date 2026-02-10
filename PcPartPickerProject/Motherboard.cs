@@ -2,7 +2,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
 namespace PcPartPickerProject;
-
 public class Motherboard
 {
     public required Guid Id { get; set; }

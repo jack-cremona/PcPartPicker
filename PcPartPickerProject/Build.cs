@@ -26,11 +26,31 @@ public class Build
         } 
     }
 
+    public Case? pcCase
+    {
+        get; set
+        {
+            if (IsCompatible(value))
+                field = value;
+        }
+    }
+    /*
+    public Gpu? gpu
+    {
+        get; set
+        {
+            if (IsCompatible(value))
+                field = value;
+        }
+    }
+    */
+
+
     //public CpuCooler cpuCooler { get; private set; }
     public List<Ram> memory { get; private set; }
     public Gpu gpu { get; private set; }
     public List<Storage> storage;
-    public Case pcCase { get; private set; }
+    //public Case pcCase { get; private set; }
     public PowerSupplyUnit psuUnit { get; private set; } 
     public bool IsComplete { get; private set; }
     
@@ -60,12 +80,13 @@ public class Build
             && (processor == null || cpuCoolerObject.chipsetType.Contains(processor.chipsetType));
     }
 
-    /*
-    public bool IsCompatibleCase(Case? caseObject)
+    
+    public bool IsCompatible(Case? caseObject)
     {
-        return caseObject == null || (motherboard == null || caseObject.MotherboardFormFactors.ToString().Contains(motherboard.formFactor.ToString()))
+        return caseObject == null || (motherboard == null || caseObject.MotherboardFormFactors.ToString().Contains(motherboard.formFactor.ToString())
+            && (gpu == null || gpu.length <= caseObject.maximumVideoCardLength));
     }
-    */
+    
     
     
 }
